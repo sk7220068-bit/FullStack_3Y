@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featured Project - AI Fashion Recommender</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <a href="index.html" class="logo">Shivam Kumar</a>
+    <nav>
+      <a href="index.html">Home & About</a>
+      <a href="projects.html" class="active">Featured Project</a>
+      <a href="login.html">Login & Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="container">
+    
+    <!-- Title Card -->
+    <div class="card">
+      <h1>AI Fashion Recommender & Outfit Upgrader</h1>
+      <p>
+        An end-to-end AI-powered fashion intelligence system that detects clothing items from images, scores outfit compatibility, and suggests occasion-specific upgrades — all backed by computer vision and content-based machine learning.
+      </p>
+      <div>
+        <span class="tech-tag">Java 17</span>
+        <span class="tech-tag">Spring Boot 3.2</span>
+        <span class="tech-tag">Python 3.11</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">YOLOv8</span>
+        <span class="tech-tag">ResNet50</span>
+        <span class="tech-tag">MongoDB 7.0</span>
+        <span class="tech-tag">React 18</span>
+        <span class="tech-tag">Docker</span>
+      </div>
+    </div>
+
+    <!-- Architecture Card -->
+    <div class="card">
+      <h2>🏗️ System Architecture</h2>
+      <pre class="code-block">
+User → React Frontend (port 5173)
+         │
+         ▼
+   Spring Boot API (port 8080)
+         │
+   ┌─────┴─────────────────────────┐
+   │  OutfitController             │
+   │  RecommendationController     │
+   │  UpgradeController            │
+   └────────────────┬──────────────┘
+                    │
+        ┌───────────┼─────────────┐
+        ▼           ▼             ▼
+   MongoDB     Python ML      CSV Dataset
+   (port 27017) Service       (outfits.csv)
+               (port 5001)
+                   │
+              ┌────┴────┐
+              │  YOLO   │  ResNet50
+              └─────────┘
+      </pre>
+    </div>
+
+    <!-- Tech Stack Card -->
+    <div class="card">
+      <h2>📦 Tech Stack Specifications</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Technology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Backend API</strong></td>
+            <td>Java 17, Spring Boot 3.2, Maven</td>
+          </tr>
+          <tr>
+            <td><strong>Database</strong></td>
+            <td>MongoDB 7.0</td>
+          </tr>
+          <tr>
+            <td><strong>ML Service</strong></td>
+            <td>Python 3.11, Flask, YOLOv8, ResNet50</td>
+          </tr>
+          <tr>
+            <td><strong>Frontend</strong></td>
+            <td>React 18, Vite, Vanilla CSS</td>
+          </tr>
+          <tr>
+            <td><strong>Containerization</strong></td>
+            <td>Docker & Docker Compose</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- How It Works Pipeline Card -->
+    <div class="card">
+      <h2>🧠 How It Works (Full Pipeline)</h2>
+      <ol style="margin-left: 1.5rem; color: #475569; line-height: 1.8;">
+        <li><strong>Upload & Occasion Selection:</strong> User uploads outfit image + selects target occasion.</li>
+        <li><strong>Controller Routing:</strong> <code>OutfitController</code> receives request in Spring Boot.</li>
+        <li><strong>Clothing Detection:</strong> <code>OutfitDetectionService</code> calls Python ML service (YOLOv8 detects clothing bounding boxes).</li>
+        <li><strong>Feature Extraction:</strong> <code>FeatureExtractionService</code> passes items to ResNet50 to extract 2048-dim feature vectors per item.</li>
+        <li><strong>Compatibility Scoring:</strong> <code>CompatibilityService</code> computes pairwise style, formality, and vector scores.</li>
+        <li><strong>Upgrade Engine:</strong> <code>OutfitUpgradeEngine</code> evaluates occasion rules to generate <code>itemsToReplace</code>, <code>itemsToAdd</code>, and suggestions.</li>
+        <li><strong>Recommendation Engine:</strong> <code>RecommendationService</code> executes Cosine Similarity against MongoDB outfit dataset.</li>
+        <li><strong>Persistence & Response:</strong> <code>UpgradeResult</code> saved to MongoDB history and returned as JSON to the React frontend.</li>
+      </ol>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
+        * Includes graceful <strong>ML Fallback (Mock Mode)</strong>: Operates seamlessly even if the Python service is offline.
+      </p>
+    </div>
+
+    <!-- API Reference Card -->
+    <div class="card">
+      <h2>🔌 REST API Reference</h2>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <h3>1. POST /api/upload-outfit</h3>
+        <p>Full pipeline: detect → features → compatibility → upgrade → recommendations.</p>
+        <pre class="code-block">curl -X POST http://localhost:8080/api/upload-outfit \
+  -F "image=@outfit.jpg" \
+  -F "occasion=party"</pre>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h3>2. POST /api/detect-clothes</h3>
+        <p>Clothing detection only (no upgrade logic).</p>
+        <pre class="code-block">curl -X POST http://localhost:8080/api/detect-clothes \
+  -F "image=@outfit.jpg"</pre>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h3>3. POST /api/recommend-outfit</h3>
+        <p>Get outfit recommendations by occasion/style (no image required).</p>
+        <pre class="code-block">curl -X POST http://localhost:8080/api/recommend-outfit \
+  -H "Content-Type: application/json" \
+  -d '{"occasion": "party", "style": "smart-casual"}'</pre>
+      </div>
+
+      <div>
+        <h3>4. GET /api/upgrade-history & /api/health</h3>
+        <p>Retrieve the 20 most recent upgrade analyses or perform a system health check.</p>
+        <pre class="code-block">curl http://localhost:8080/api/upgrade-history
+curl http://localhost:8080/api/health</pre>
+      </div>
+    </div>
+
+    <!-- Dataset Card -->
+    <div class="card">
+      <h2>📊 Dataset Schemas</h2>
+      <ul>
+        <li><strong>outfits.csv (25 records):</strong> Contains columns for outfit <code>id</code>, <code>name</code>, <code>style</code>, <code>occasions</code>, <code>items</code>, <code>color_palette</code>, <code>season</code>, <code>formality_score</code>, and <code>feature_vector</code> (64-dim).</li>
+        <li><strong>deepfashion_sample.csv (100 records):</strong> Schema-compatible subset of DeepFashion dataset with 13 clothing categories, attribute labels, landmark coordinates, and formality annotations.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Shivam Kumar. All rights reserved.
+  </footer>
+
+</body>
+</html>
