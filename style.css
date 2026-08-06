@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Shivam Kumar - Simple & Clean 3-Page Website Stylesheet
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f6f8;
+  color: #333333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Navigation */
+header {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Container & Layout */
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 2rem auto;
+  flex: 1;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Code Blocks & Tables */
+.code-block {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+  line-height: 1.4;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-table th {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-weight: bold;
+}
+
+.tech-tag {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #334155;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-right: 0.4rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* Forms & Inputs */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: #1e293b;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+button {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Footer */
+footer {
+  background-color: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
