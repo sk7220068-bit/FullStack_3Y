@@ -1,0 +1,52 @@
+< !DOCTYPE html >
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+                <title>Dark/Light Theme Toggle</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    transition: background 0.3s, color 0.3s;
+                    background: #ffffff;
+                    color: #000000;
+    }
+
+                    body.dark {
+                        background: #121212;
+                    color: #ffffff;
+    }
+
+                    .toggle-btn {
+                        margin: 20px;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    background: #ccc;
+                    font-size: 16px;
+    }
+
+                    .dark .toggle-btn {
+                        background: #444;
+                    color: #fff;
+    }
+                </style>
+        </head>
+        <body>
+            <button class="toggle-btn" id="themeToggle">Switch Theme</button>
+            <h1>Hello, World!</h1>
+            <p>This is a simple dark/light theme toggle.</p>
+
+            <script>
+                const toggleBtn = document.getElementById("themeToggle");
+                const body = document.body;
+
+    toggleBtn.addEventListener("click", () => {
+                    body.classList.toggle("dark");
+                toggleBtn.textContent = body.classList.contains("dark")
+                ? "Switch to Light Theme"
+                : "Switch to Dark Theme";
+    });
+            </script>
+        </body>
+    </html>
